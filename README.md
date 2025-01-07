@@ -1,2 +1,2 @@
 # BellaBeats
-First Project
+Google Data Analytics Capstone
