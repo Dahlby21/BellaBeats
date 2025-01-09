@@ -20,6 +20,6 @@ The datasets used contain information logged from ~30 different Fitbit device us
 **Cleaning and Transformation:**
 The most glaring issue with the raw data that we were working with was the disjointed dates. With a limited amount of data, broadening the range for comparison would allow for a more complete comparison. With a year's worth of findings, cyclical changes could've been a useful measure to document. However, two months was too sparse a sample for much beyond aggregation.
 
-*Both sets were merged along the user id and joined the 3/12/2016-4/11/2016 data with its 4/12/2016-5/12/2016 counterpart.*
+**Both sets were merged along the user id and joined the 3/12/2016-4/11/2016 data with its 4/12/2016-5/12/2016 counterpart.*
 
 **Findings and Conclusion:**
