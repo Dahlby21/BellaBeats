@@ -22,4 +22,9 @@ The most glaring issue with the raw data that we were working with was the disjo
 
 **Both sets were merged along the user id and joined the 3/12/2016-4/11/2016 data with its 4/12/2016-5/12/2016 counterpart within Google Sheets.*
 
+The next problem that needed correcting was the date format for the data. Doing so allowed me to port the data into BigQuery to analyze it further.
+
+**All sheets converted date format to yyyy/mm/dd on Google Sheets.*
+
+
 **Findings and Conclusion:**
