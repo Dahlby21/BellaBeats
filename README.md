@@ -22,9 +22,14 @@ The most glaring issue with the raw data that we were working with was the disjo
 
 **Both sets were merged along the user id and joined the 3/12/2016-4/11/2016 data with its 4/12/2016-5/12/2016 counterpart within Google Sheets.*
 
-The next problem that needed correcting was the date format for the data. Doing so allowed me to port the data into BigQuery to analyze it further.
+A small correction that I made was cleaning up the number format for columns that contained decimal integers. Rounding of these columns allowed for an easier time reading through the data and comparing numbers.
+
+**On all applicable columns, rounded the number format to the tenths place for readability and ease of use on Google Sheets.*
+
+The final problem to tackle before I could move the data to a platform where I could utilize SQL was the date format. Doing so allowed me to port the data into BigQuery to analyze it further.
 
 **All sheets converted date format to yyyy/mm/dd on Google Sheets.*
+
 
 
 **Findings and Conclusion:**
