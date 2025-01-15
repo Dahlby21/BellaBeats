@@ -1,1 +1,35 @@
+/* 
+Below are the queries I used within BigQuery to parse and analyze the data for my project. Each separate entry will be accompanied by its purpose.
+A limitation I had was the ability to remove values or columns within the software I was using as it was not possible unless the original data source was altered after.
+*/
+
+--Counts the unique number of users on each table using joins. (35 total users surveyed)
+SELECT 
+  COUNT(DISTINCT da.Id) AS act_id, 
+  COUNT(DISTINCT sd.Id) AS sleep_id, 
+  COUNT(DISTINCT wl.Id) AS weight_id, 
+  COUNT(DISTINCT actt.Id) AS actt_id
+FROM `new-project-437320.fitbit_user_data.daily_activity` AS da
+FULL JOIN `new-project-437320.fitbit_user_data.sleep_day` AS sd ON da.Id = sd.Id
+FULL JOIN `new-project-437320.fitbit_user_data.weight_log` AS wl ON da.Id = wl.Id
+FULL JOIN `new-project-437320.fitbit_user_data.active_time` AS actt ON da.Id = actt.Id;
+
+--Checks users that are present within all tables. (9 total shared users)
+SELECT DISTINCT
+  da.Id AS act_id,
+  sd.Id AS sleep_id, 
+  wl.Id AS weight_id, 
+  actt.Id AS actt_id
+FROM `new-project-437320.fitbit_user_data.daily_activity` AS da
+JOIN `new-project-437320.fitbit_user_data.sleep_day` AS sd ON da.Id = sd.Id
+JOIN `new-project-437320.fitbit_user_data.weight_log` AS wl ON da.Id = wl.Id
+JOIN `new-project-437320.fitbit_user_data.active_time` AS actt ON da.Id = actt.Id;
+
+--Sorted selected columns without the possibility of null values within the activity date section.
+SELECT da.Calories, sd.HoursAsleep, da.Id, da.ActivityDate
+FROM `new-project-437320.fitbit_user_data.daily_activity` as da
+RIGHT JOIN `new-project-437320.fitbit_user_data.sleep_day` as sd
+ON da.Id = sd.Id AND da.ActivityDate = sd.Date
+WHERE da.ActivityDate IS NOT NULL
+ORDER BY da.ActivityDate, da.Id ASC;
 
