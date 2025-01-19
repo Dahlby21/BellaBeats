@@ -34,7 +34,7 @@ FULL JOIN `new-project-437320.fitbit_user_data.sleep_day` AS sd ON da.Id = sd.Id
 FULL JOIN `new-project-437320.fitbit_user_data.weight_log` AS wl ON da.Id = wl.Id
 FULL JOIN `new-project-437320.fitbit_user_data.active_time` AS actt ON da.Id = actt.Id;
 
--—Uses the previously made column "total_waking_minutes" to calculate our new column "percent_active" and assess how active the user base is with the time that they are conscious.
+--Uses the previously made column "total_waking_minutes" to calculate our new column "percent_active" and assess how active the user base is with the time that they are conscious.
 --New column is again added to the Google Sheet.
 SELECT 
   DISTINCT actt.Id,
@@ -47,7 +47,7 @@ WHERE (ActiveTime/TotalWakingMin) IS NOT NULL
   AND (ActiveTime/TotalWakingMin) != 0
 ORDER BY percent_active DESC;
 
--—Gives an average value for each user's percent activity if they've tracked multiple days of entries.
+--Gives an average value for each user's percent activity if they've tracked multiple days of entries.
 SELECT 
   actt.Id,
   AVG(PercentActive) AS avg_percent_active
@@ -59,6 +59,20 @@ WHERE PercentActive IS NOT NULL
   AND PercentActive != 0
 GROUP BY actt.Id
 ORDER BY avg_percent_active DESC;
+
+--Finds the average percent active across the group. The average percent for the group is 32.3%.
+SELECT 
+  AVG(PercentActive) AS overall_avg_percent_active,
+  COUNT(*) AS valid_record_count
+FROM `new-project-437320.fitbit_user_data.daily_activity` AS da
+FULL JOIN `new-project-437320.fitbit_user_data.sleep_day` AS sd ON da.Id = sd.Id
+FULL JOIN `new-project-437320.fitbit_user_data.weight_log` AS wl ON da.Id = wl.Id
+FULL JOIN `new-project-437320.fitbit_user_data.active_time` AS actt ON da.Id = actt.Id
+WHERE PercentActive IS NOT NULL 
+  AND PercentActive != 0;
+
+--
+
 
 --Sorted selected columns without the possibility of null values within the activity date section.
 SELECT da.Calories, sd.HoursAsleep, da.Id, da.ActivityDate
