@@ -71,6 +71,33 @@ FULL JOIN `new-project-437320.fitbit_user_data.active_time` AS actt ON da.Id = a
 WHERE PercentActive IS NOT NULL 
   AND PercentActive != 0;
 
+--References the span of dates holding logged info in our dataset. Date range is 3/12/2016-5/1/2016.
+SELECT DISTINCT ActivityDate
+FROM `new-project-437320.fitbit_user_data.daily_activity`
+
+--Shows the number of unique users that entered data on a given day. Results show that no more than 3 unique users logged data on any given day. 
+--(This limits comparison of the test population as a whole as we do not have the same time frame logged for all users.)
+SELECT 
+  ActivityDate,
+  COUNT(DISTINCT da.Id) AS distinct_users_per_day
+FROM `new-project-437320.fitbit_user_data.daily_activity` da
+GROUP BY ActivityDate
+ORDER BY ActivityDate;
+
+--Sets up the next question to see how greatly total steps and calories burnt correlate. Selects the four initially used columns and removes errant null values.
+SELECT 
+  da.Id,
+  da.ActivityDate,
+  da.Calories, 
+  da.TotalSteps
+FROM `new-project-437320.fitbit_user_data.daily_activity` AS da
+FULL JOIN `new-project-437320.fitbit_user_data.sleep_day` AS sd ON da.Id = sd.Id
+FULL JOIN `new-project-437320.fitbit_user_data.weight_log` AS wl ON da.Id = wl.Id
+FULL JOIN `new-project-437320.fitbit_user_data.active_time` AS actt ON da.Id = actt.Id
+WHERE da.ActivityDate IS NOT NULL AND da.TotalSteps IS NOT NULL
+GROUP BY da.ActivityDate, da.Calories, da.TotalSteps, da.Id
+ORDER BY da.Id;
+
 --
 
 
