@@ -73,7 +73,7 @@ WHERE PercentActive IS NOT NULL
 
 --References the span of dates holding logged info in our dataset. Date range is 3/12/2016-5/1/2016.
 SELECT DISTINCT ActivityDate
-FROM `new-project-437320.fitbit_user_data.daily_activity`
+FROM `new-project-437320.fitbit_user_data.daily_activity`; 
 
 --Shows the number of unique users that entered data on a given day. Results show that no more than 3 unique users logged data on any given day. 
 --(This limits comparison of the test population as a whole as we do not have the same time frame logged for all users.)
@@ -83,6 +83,15 @@ SELECT
 FROM `new-project-437320.fitbit_user_data.daily_activity` da
 GROUP BY ActivityDate
 ORDER BY ActivityDate;
+
+--I ran one last query to determine how much variance we had with the population's tracking data. This query tracks how many separate days each user logged data.
+--There was one user that logged 18 days of activity, otherwise, every other user ranged between 4 and 1 different days of entry.
+--Based on what I've found out, there is a small amount of data to work with to track trends based on dates across users. It would be more applicable to average the activity provided overall.
+SELECT 
+  DISTINCT da.Id,
+  COUNT(DISTINCT ActivityDate)
+FROM `new-project-437320.fitbit_user_data.daily_activity` da
+  GROUP BY da.Id;
 
 --Sets up the next question to see how greatly total steps and calories burnt correlate. Selects the four initially used columns and removes errant null values.
 SELECT 
@@ -97,9 +106,6 @@ FULL JOIN `new-project-437320.fitbit_user_data.active_time` AS actt ON da.Id = a
 WHERE da.ActivityDate IS NOT NULL AND da.TotalSteps IS NOT NULL
 GROUP BY da.ActivityDate, da.Calories, da.TotalSteps, da.Id
 ORDER BY da.Id;
-
---
-
 
 --Sorted selected columns without the possibility of null values within the activity date section.
 SELECT da.Calories, sd.HoursAsleep, da.Id, da.ActivityDate
