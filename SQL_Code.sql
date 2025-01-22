@@ -93,19 +93,25 @@ SELECT
 FROM `new-project-437320.fitbit_user_data.daily_activity` da
   GROUP BY da.Id;
 
---Sets up the next question to see how greatly total steps and calories burnt correlate. Selects the four initially used columns and removes errant null values.
+--This is the query that tells us the averages that we can plot to check for correlation between steps and calories. RERFERENCE *Average Steps and Calories.png
 SELECT 
   da.Id,
-  da.ActivityDate,
-  da.Calories, 
-  da.TotalSteps
+  SUM(da.Calories) AS total_calories,
+  SUM(da.TotalSteps) AS total_steps,
+  (SUM(da.Calories) / COUNT(da.ActivityDate)) AS avg_calories,
+  (SUM(da.TotalSteps) / COUNT(da.ActivityDate)) AS avg_steps
 FROM `new-project-437320.fitbit_user_data.daily_activity` AS da
-FULL JOIN `new-project-437320.fitbit_user_data.sleep_day` AS sd ON da.Id = sd.Id
-FULL JOIN `new-project-437320.fitbit_user_data.weight_log` AS wl ON da.Id = wl.Id
-FULL JOIN `new-project-437320.fitbit_user_data.active_time` AS actt ON da.Id = actt.Id
-WHERE da.ActivityDate IS NOT NULL AND da.TotalSteps IS NOT NULL
-GROUP BY da.ActivityDate, da.Calories, da.TotalSteps, da.Id
+WHERE da.Calories IS NOT NULL AND da.TotalSteps IS NOT NULL
+GROUP BY da.Id
 ORDER BY da.Id;
+
+--Grabs the next table for analysis. Shows how many unique users reported to the weight log dataset. (13 total unique users.)
+SELECT
+  DISTINCT wl.Id
+FROM `new-project-437320.fitbit_user_data.weight_log` AS wl;
+
+--
+
 
 --Sorted selected columns without the possibility of null values within the activity date section.
 SELECT da.Calories, sd.HoursAsleep, da.Id, da.ActivityDate
