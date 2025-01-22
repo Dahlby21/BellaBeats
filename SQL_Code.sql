@@ -110,8 +110,27 @@ SELECT
   DISTINCT wl.Id
 FROM `new-project-437320.fitbit_user_data.weight_log` AS wl;
 
---
+--Displays total logged weight entries per user. Two users had many logged entries compared to the whole (44,33), while the rest did not log above 6 entries.
+SELECT 
+  wl.Id,
+  COUNT(wl.Id) AS num_entries
+FROM `new-project-437320.fitbit_user_data.weight_log` AS wl
+GROUP BY wl.Id
+ORDER BY num_entries DESC;
 
+--Final function to check how users were using the Fitbit to track weight measures. Ten of thirteen users manually reported their weight data.
+--There was little if any correlation to a method that resulted in a user tracking more data overall in this sample.
+SELECT 
+  wl.Id,
+  COUNT(wl.Id) AS num_entries,
+  SUM(
+    CASE 
+    WHEN wl.IsManualReport = TRUE THEN 1 
+    ELSE 0 
+    END) AS num_manual_entries
+FROM `new-project-437320.fitbit_user_data.weight_log` AS wl
+GROUP BY wl.Id
+ORDER BY num_entries DESC;
 
 --Sorted selected columns without the possibility of null values within the activity date section.
 SELECT da.Calories, sd.HoursAsleep, da.Id, da.ActivityDate
