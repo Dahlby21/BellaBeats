@@ -22,6 +22,16 @@ The most glaring issue with the raw data that we were working with was the disjo
 
 **Both sets were merged along the user id and joined the 3/12/2016-4/11/2016 data with its 4/12/2016-5/12/2016 counterpart within Google Sheets.*
 
+Wanted to dive deeper into the daily activity data and separated the sedentary, lightly active, fairly active, very active, and calories columns into a new table to do further analysis.
+
+**New table "active_time" created with the intent of adding additional columns.**
+
+**Created column "ActiveTime" that sums all activity, exclusive of sedentary time, to show how much total time was spent moving.**
+
+**Created column "TotalWakingMin" that sums all of the activity of a user per day and will be the final component to make the last column.**
+
+**Final column "PercentActive" added to the active_time table. Divides ActiveTime by PercentActive to find the percent of time a user is active.**
+
 A small correction that I made was cleaning up the number format for columns that contained decimal integers. Rounding of these columns allowed for an easier time reading through the data and comparing numbers.
 
 **On all applicable columns, rounded the number format to the tenths place for readability and ease of use on Google Sheets.*
