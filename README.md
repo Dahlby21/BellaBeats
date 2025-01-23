@@ -1,7 +1,7 @@
 # BellaBeats
 Google Data Analytics Capstone
 
-The data was gathered from 30 consenting FitBit users, and I sourced it from Möbius on his Kaggle webpage, which is linked below.
+The data was gathered from 35 consenting FitBit users, and I sourced it from Möbius on his Kaggle webpage, which is linked below.
 
 https://www.kaggle.com/datasets/arashnic/fitbit
 
