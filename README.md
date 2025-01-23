@@ -24,6 +24,8 @@ The most glaring issue with the raw data that we were working with was the disjo
 
 Wanted to dive deeper into the daily activity data and separated the sedentary, lightly active, fairly active, very active, and calories columns into a new table to do further analysis.
 
+The next several additions below note the adjustments made to the new table that was made.
+
 **New table "active_time" created with the intent of adding additional columns.**
 
 **Created column "ActiveTime" that sums all activity, exclusive of sedentary time, to show how much total time was spent moving.**
