@@ -132,10 +132,23 @@ FROM `new-project-437320.fitbit_user_data.weight_log` AS wl
 GROUP BY wl.Id
 ORDER BY num_entries DESC;
 
---Sorted selected columns without the possibility of null values within the activity date section.
-SELECT da.Calories, sd.HoursAsleep, da.Id, da.ActivityDate
-FROM `new-project-437320.fitbit_user_data.daily_activity` as da
-RIGHT JOIN `new-project-437320.fitbit_user_data.sleep_day` as sd
-ON da.Id = sd.Id AND da.ActivityDate = sd.Date
-WHERE da.ActivityDate IS NOT NULL
-ORDER BY da.ActivityDate, da.Id ASC;
+--Pulls the number of users that logged an activity for a distance. Five total users used the Fitbit function to log an activity prior to completing it.
+SELECT
+  da.Id,
+  COUNT(da.Id) AS num_logs,
+  SUM(da.TotalDistance) AS total_distance,
+  SUM(da.LoggedActivitiesDistance) AS total_logged_activities_distance
+FROM `new-project-437320.fitbit_user_data.daily_activity` AS da
+WHERE da.LoggedActivitiesDistance IS NOT NULL AND da.LoggedActivitiesDistance != 0
+GROUP BY da.Id
+ORDER BY num_logs DESC;
+
+--Ran the previous query without the 'where' clause to grab and chart the total sample. Data shows little adoption of the logged activities function and data does not strongly correlate to 'more use = more logged activity'.
+SELECT
+  da.Id,
+  COUNT(da.Id) AS num_logs,
+  SUM(da.TotalDistance) AS total_distance,
+  SUM(da.LoggedActivitiesDistance) AS total_logged_activities_distance
+FROM `new-project-437320.fitbit_user_data.daily_activity` AS da
+GROUP BY da.Id
+ORDER BY num_logs DESC;
