@@ -46,4 +46,13 @@ The final problem to tackle before I could move the data to a platform where I c
 
 **Findings and Conclusion:**
 
+User Pattens:
+Related to what degree of activity users participated in when they were active, most exercize was done in the lightly active zone. This trend could either be used to reinforce the idea that Bellabeat should expand their offering of light activities like walking, yoga, etc. or instead find ways to increase users' activity on the higher levels.
 
+Product Features:
+A feature that wasn't used as much but could still show promise is the logged activity tracker. The Fitbit user base data showed that only ~15% of the sample actually took the time to log an activity. What Bellabeat could do differently is add a feature to the app that provides a slew of workouts to be done. Once one of the said workouts is selected, that data can automatically be transferred over as a logged activity on their calendar. An additional example of this would be linkage with a seperate website that shows trails that can be run/walked on. This way, users have increased options for planned activities that they can do and even incorporate into a routine if they discover an activity/route that they enjoy doing. It likewise allows Bellabeat to garner what parts of their workouts are popular and if they should allocate more resources towards planning them.
+
+The present WHO reccomendation is 60 minutes of moderate physical activity daily. Bellabeat could help users achieve this goal by offering a feature that tracks activity with the appropriate heartrate in this range and displays the goal for the user. Ways to gamify excerise could help increase engagment on the platform. Incentives like a reduction to a courses price, or a free session of guided help might be an effective means of rewarding a user for sticking to healthy, routine activity.
+
+Product Line:
+A suggestion to supplement the product line would be a Bella Beats scale that could be linked to the smart watch device. The data that was gathered lacked substantive info to base greater comparison on. The fat percentage category was rarely used and was only tracked by users that were manually tracking their weight metrics. If Bellabeat were to manufacture their own smart scale, users could be more likely to connect with the weight log tracking as a whole, potentially leading to more consistent logging, better trend data, and a holistic view for the user that Bellabeat could frame with a dashboard. I think BMI tracking might fail to show health progress in general, but such a measure is still widely used especially for insurance reasons and it likely makes sense to continue tabulating it for the user's knowledge.
