@@ -47,7 +47,9 @@ The final problem to tackle before I could move the data to a platform where I c
 
 User Patterns:
 
-Related to what degree of activity users participated in when they were active, most exercise was done in the lightly active zone. This trend could either be used to reinforce the idea that Bellabeat should expand its offering of light activities like walking, yoga, etc, or instead find ways to increase users' activity on higher levels.
+Related to the degree of activity users participated in when they were active, most exercise was done in the lightly active zone. This trend could either be used to reinforce the idea that Bellabeat should expand its offering of light activities like walking, yoga, etc, or instead find ways to increase users' activity on higher levels.
+
+Many features that the Fitbit offered were scantly used. This could be a problem with the scope of our dataset, however, if the results that we did gather are indicative of a significant trend, then there are several possibilities for lesser engagement. One such possibility is that Fitbit purchasers are unaware of other features within their smart device. The other rationale may be that most users purchase a Fitbit for a specific purpose. In the case of this dataset, users may only feel that the step counter/heart rate monitor is their exclusive reason for having a smartwatch. Given this, it's important that any additions to Bellabeat's functionality or product array are marketed well and the intent is known to users so that further enhancements can be ruled on without ambiguity.
 
 Product Features:
 
